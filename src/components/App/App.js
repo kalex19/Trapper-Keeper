@@ -5,7 +5,7 @@ import * as actions from '../../actions';
 import './App.scss';
 import PropTypes from 'prop-types';
 import Nav from '../../components/Nav/nav';
-import NoteContainer from '../NoteContainer/noteContainer';
+import NoteContainer from '../../containers/NoteContainer/noteContainer';
 
 function App(){
 	let noteContainer = <NoteContainer />;
