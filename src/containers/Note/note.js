@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import './note.scss';
+// import { Link } from 'react-router-dom';
+// import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 export default class Note extends Component {
@@ -28,4 +27,4 @@ export default class Note extends Component {
 	}
 }
 
-note.propTypes = {};
+// note.propTypes = {};

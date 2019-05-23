@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as actions from '../../actions';
-import './App.scss';
+// import * as actions from '../../actions';
 import PropTypes from 'prop-types';
-import Nav from '../../components/Nav/nav';
 import NoteContainer from '../../containers/NoteContainer/noteContainer';
 
 function App(){
 	let noteContainer = <NoteContainer />;
-	let nav = <Nav />;
 	return (
 		<div className="App">
-			{nav}
+		<h1>Tranquilisticky</h1>
 			{noteContainer}
 		</div>
 	);
