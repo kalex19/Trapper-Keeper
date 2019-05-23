@@ -10,7 +10,7 @@ body {
   text-align: center;
 
   h1 {
-    color: $h-color;
+    color: lighten($h-color, 30%);
     margin: 1rem auto;
     text-shadow: 2px 2px 2px darken($h-color, 75%);
   }
