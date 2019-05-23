@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 export class notepopup extends Component {
 	constructor() {
@@ -11,47 +12,49 @@ export class notepopup extends Component {
 		};
 	}
 	handleChange = e => {
-		this.setState({
-			[e.target.name]: e.target.value
-		});
+		const {name, value} = e.target
+		this.setState({	[name]:value });
 	};
 
-	handleClick = e => {
-    console.log(this.state)
-    //save whole note to store - send to backend
+	handleSubmit = e => {
+		e.preventDefault();
 	};
 
-	handleEnter = e => {
-    if(e.key === 'Enter' && !this.listItem === ''){
-      newListItem = {
-        id: Date.now(),
-        listItem: this.state.listItem,
-        completed: false
-      }
-      this.setState({
-        listItems: [...this.state.newListItem, newListItem]
-      })
-    } 
-  };
+	// handleEnter = e => {
+  //   if(e.key === 'Enter' && !this.listItem === ''){
+  //   const  newListItem = {
+  //       id: Date.now(),
+  //       listItem: this.state.listItem,
+  //       completed: false
+  //     }
+  //     this.setState({
+  //       listItems: [...this.state.newListItem, newListItem]
+  //     })
+  //   } 
+  // };
 
 	render() {
 		return (
-			<form>
+			<form className='note-pop-up'>
 				<input value={this.state.title} placeholder="Title" name="title" type="text" onChange={this.handleChange} />
 				<input
-					value={this.state.listItem}
+					value={this.state.newItem}
 					placeholder="List Item"
 					name="newItem"
 					type="text"
-          onChange={this.handleChange} 
-          onKeyPress={this.handleEnter}
-				/>
-			</form>
-      <div onClick={this.handleClick} role='button'>Save</div>
+					onChange={this.handleChange} 
+					// onKeyPress={this.handleEnter}
+			/>
+			<button onClick={this.handleSubmit}>Save</button>
+		</form>
 		);
 	}
 }
 
-export default notepopup;
+const mapStateToProps = (state) => ({
+
+})
+
+export default connect(mapStateToProps)(notepopup);
 
 //?generate a new list item note?
