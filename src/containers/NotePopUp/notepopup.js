@@ -6,11 +6,11 @@ export class notepopup extends Component {
 		super();
 		this.state = {
       title: '',
-      listItem: '',
-      newListItem: {},
-      listItems: []
+      task: '',
+      tasks: []
 		};
 	}
+
 	handleChange = e => {
 		const {name, value} = e.target
 		this.setState({	[name]:value });
@@ -18,20 +18,31 @@ export class notepopup extends Component {
 
 	handleSubmit = e => {
 		e.preventDefault();
+		this.saveNote();
 	};
 
-	// handleEnter = e => {
-  //   if(e.key === 'Enter' && !this.listItem === ''){
-  //   const  newListItem = {
-  //       id: Date.now(),
-  //       listItem: this.state.listItem,
-  //       completed: false
-  //     }
-  //     this.setState({
-  //       listItems: [...this.state.newListItem, newListItem]
-  //     })
-  //   } 
-  // };
+	saveNote = () => {
+		const { title, tasks } = this.state;
+		const newNote = {
+			id: Date.now(),
+			title,
+      tasks,
+      completed: false
+		}
+	}
+
+	handleEnter = e => {
+    if(e.key === 'Enter' && !this.task === ''){
+    const  newTask = {
+        id: Date.now(),
+        task: this.state.task,
+        completed: false
+      }
+      this.setState({
+        tasks: [...this.state.tasks, newTask]
+      })
+    } 
+  };
 
 	render() {
 		return (
@@ -43,7 +54,7 @@ export class notepopup extends Component {
 					name="newItem"
 					type="text"
 					onChange={this.handleChange} 
-					// onKeyPress={this.handleEnter}
+					onKeyPress={this.handleEnter}
 			/>
 			<button onClick={this.handleSubmit}>Save</button>
 		</form>
@@ -51,10 +62,10 @@ export class notepopup extends Component {
 	}
 }
 
-const mapStateToProps = (state) => ({
-
+const mapDispatchToProps = (state) => ({
+	
 })
 
-export default connect(mapStateToProps)(notepopup);
+export default connect(null, mapDispatchToProps)(notepopup);
 
 //?generate a new list item note?
