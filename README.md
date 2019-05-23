@@ -15,9 +15,11 @@ Coming soon...
 
 ## Demo
 
+Coming soon...
 
 ## Desktop View
 
+Coming soon...
 
 ## Wireframe
 
