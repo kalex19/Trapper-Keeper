@@ -11,10 +11,6 @@
     font-size: 1rem;
   }
 
-  .delete {
-    font-size: 1rem;
-  }
-
   input {
     border: 2px solid darken($accent, 30%);
     display: block;
@@ -22,15 +18,17 @@
     margin: .2rem;
   }
 
-  button {
+  .delete {
     border: 1px solid transparent;
     background-color: transparent;
     color: black;
+    font-size: 1.5rem;
     position: relative;
     left: 4.5rem;
     top: 1rem;
 
     &:hover {
+      animation: jello-horizontal 0.9s both;
       cursor: pointer;
       color: white;
     }
