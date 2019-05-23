@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Note from '../Note/note';
-import { connect } from 'react-redux';
-import './NoteContainer.scss';
+// import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 export default class NoteContainer extends Component {
@@ -17,8 +16,8 @@ export default class NoteContainer extends Component {
   }
 };
 
-export default connect(mapStateToProps)(NoteContainer);
+// export default connect(mapStateToProps)(NoteContainer);
 
-noteContainer.propTypes = {
+// noteContainer.propTypes = {
   
-};
+// };
