@@ -4,8 +4,10 @@ export class notepopup extends Component {
 	constructor() {
 		super();
 		this.state = {
-			title: '',
-			newNote: ''
+      title: '',
+      listItem: '',
+      newListItem: {},
+      listItems: []
 		};
 	}
 	handleChange = e => {
@@ -14,29 +16,42 @@ export class notepopup extends Component {
 		});
 	};
 
-	handleSubmit = e => {
-		e.preventDefault();
+	handleClick = e => {
+    console.log(this.state)
+    //save whole note to store - send to backend
 	};
+
+	handleEnter = e => {
+    if(e.key === 'Enter' && !this.listItem === ''){
+      newListItem = {
+        id: Date.now(),
+        listItem: this.state.listItem,
+        completed: false
+      }
+      this.setState({
+        listItems: [...this.state.newListItem, newListItem]
+      })
+    } 
+  };
 
 	render() {
 		return (
-			<form onSubmit={this.handleSubmit}>
+			<form>
 				<input value={this.state.title} placeholder="Title" name="title" type="text" onChange={this.handleChange} />
 				<input
-					value={this.state.newNote}
+					value={this.state.listItem}
 					placeholder="List Item"
-					name="newNote"
+					name="newItem"
 					type="text"
-					onChange={this.handleChange}
+          onChange={this.handleChange} 
+          onKeyPress={this.handleEnter}
 				/>
 			</form>
+      <div onClick={this.handleClick} role='button'>Save</div>
 		);
 	}
 }
 
 export default notepopup;
 
-//upon enter and there being input in the list item
-//create a new note with an id, the content, and that completed = false
-//save it to state as a new note in an array of notes for that card
 //?generate a new list item note?
