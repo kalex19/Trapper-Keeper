@@ -1,0 +1,38 @@
+.Note {
+  background: $accent;
+  border-radius: 15px;
+  display: inline-block;
+  margin: 1rem;
+  padding: 20px;
+  width: fit-content;
+
+  .list-item {
+    font-family: $body-font;
+    font-size: 1rem;
+  }
+
+  .delete {
+    font-size: 1rem;
+  }
+
+  input {
+    border: 2px solid darken($accent, 30%);
+    display: block;
+    font-family: $body-font;
+    margin: .2rem;
+  }
+
+  button {
+    border: 1px solid transparent;
+    background-color: transparent;
+    color: black;
+    position: relative;
+    left: 4.5rem;
+    top: 1rem;
+
+    &:hover {
+      cursor: pointer;
+      color: white;
+    }
+  }
+}

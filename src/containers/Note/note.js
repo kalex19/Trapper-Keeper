@@ -13,11 +13,11 @@ export default class Note extends Component {
 	};
 
 	render() {
-		let listItem = <input placeholder="to-do" value="listItem" name="listItem" onChange={this.handleItemChange} />;
+		let listItem = <input placeholder="to-do" className="list-item" value="listItem" name="listItem" onChange={this.handleItemChange} />;
 
 		return (
 			<div className="Note">
-				<input placeholder="title" value="title" name="title" onChange={this.handleTitleChange} />
+				<input placeholder="title" value="title" name="title" className="list-item" onChange={this.handleTitleChange} />
 				{listItem}
 				<button className="delete">
 					<i class="fas fa-trash-alt" />

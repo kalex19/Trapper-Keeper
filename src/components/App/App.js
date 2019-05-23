@@ -9,7 +9,7 @@ function App(){
 	let noteContainer = <NoteContainer />;
 	return (
 		<div className="App">
-		<h1>Tranquilisticky</h1>
+		<h1>Tranquili-Sticky</h1>
 			{noteContainer}
 		</div>
 	);
