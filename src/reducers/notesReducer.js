@@ -1,6 +1,6 @@
 export const notes = (state = [], action) => {
   switch(action.type) {
-    case 'SET_NOTES':
+    case 'ADD_ALL_NOTES':
       return action.notes
     case 'TOGGLE_COMPLETE':
       return state.map(note => {
