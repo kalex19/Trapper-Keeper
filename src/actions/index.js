@@ -18,6 +18,16 @@ export const toggleCompleteTask = id => ({
     id
 })
 
+export const loading = bool => ({
+    type: 'IS_LOADING',
+    bool
+});
+
+export const setError = bool => ({
+    type: 'SET_ERROR',
+    bool
+});
+
 export const deleteNote = deletedNote => ({
     type: 'DELETE_NOTE',
     deletedNote
