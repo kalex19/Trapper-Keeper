@@ -19,7 +19,7 @@ export const deleteNote = deletedNote => ({
 })
 
 export const loading = bool => ({
-    type: isLoading,
+    type: IS_LOADING,
     bool
 });
 
