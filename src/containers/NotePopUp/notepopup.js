@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { addNewNote } from '../../actions';
 
 export class notepopup extends Component {
 	constructor() {
@@ -16,20 +18,26 @@ export class notepopup extends Component {
 		this.setState({	[name]:value });
 	};
 
-	handleSubmit = e => {
+	submitForm = e => {
 		e.preventDefault();
-		this.saveNote();
+		const { saveNote } = this.props;
+		saveNote({
+			id: Date.now(),
+			title: this.state.title,
+      tasks: this.state.tasks,
+      completed: false
+		})
 	};
 
-	saveNote = () => {
-		const { title, tasks } = this.state;
-		const newNote = {
-			id: Date.now(),
-			title,
-      tasks,
-      completed: false
-		}
-	}
+	// saveNote = () => {
+	// 	const { title, tasks } = this.state;
+	// 	const newNote = {
+	// 		id: Date.now(),
+	// 		title,
+  //     tasks,
+  //     completed: false
+	// 	}
+	// }
 
 	handleEnter = e => {
     if(e.key === 'Enter' && !this.task === ''){
@@ -49,23 +57,25 @@ export class notepopup extends Component {
 			<form className='note-pop-up'>
 				<input value={this.state.title} placeholder="Title" name="title" type="text" onChange={this.handleChange} />
 				<input
-					value={this.state.newItem}
+					value={this.state.task}
 					placeholder="List Item"
-					name="newItem"
+					name="task"
 					type="text"
 					onChange={this.handleChange} 
 					onKeyPress={this.handleEnter}
 			/>
-			<button onClick={this.handleSubmit}>Save</button>
+			<Link exact path='/'>
+			<button onClick={this.submitForm}>Save</button>
+			</Link>
 		</form>
 		);
 	}
 }
 
-const mapDispatchToProps = (state) => ({
-	
+
+
+const mapDispatchToProps = (dispatch) => ({
+	saveNote: (obj) => dispatch(addNewNote(obj))
 })
 
 export default connect(null, mapDispatchToProps)(notepopup);
-
-//?generate a new list item note?
