@@ -15,5 +15,5 @@ describe('isLoading', () => {
     const result = isLoading(undefined, actions.isLoading);
 
     expect(result).toEqual(expected);
-  })
-})
+  });
+});
