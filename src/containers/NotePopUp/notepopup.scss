@@ -14,10 +14,16 @@
   
     input {
       border: 2px solid darken($accent, 30%);
-      display: block;
       font-family: $body-font;
       margin: .2rem;
       padding: 5px;
+    }
+
+    .add-task,
+    .delete-task {
+      background: transparent;
+      border: 1px solid transparent;
+      cursor: pointer;
     }
   
     .delete {
@@ -36,3 +42,4 @@
       }
     }
   }
+
