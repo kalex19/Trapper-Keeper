@@ -1,30 +1,23 @@
-import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
-// import { connect } from 'react-redux';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class Note extends Component {
-	handleTitleChange = () => {
-		console.log('handleTitleChange');
-	};
-
-	handleItemChange = () => {
-		console.log('handleItemChange');
-	};
-
-	render() {
-		let listItem = <input placeholder="to-do" className="list-item" name="listItem" onChange={this.handleItemChange} />;
-
-		return (
-			<div className="Note">
-				<input placeholder="title" name="title" className="list-item" onChange={this.handleTitleChange} />
-				{listItem}
-				<button className="delete">
-					<i class="fas fa-trash-alt" />
-				</button>
-			</div>
+const Note = (props) => {
+	const {title, tasks, complete, id} = props;
+	return (
+		<div className="Note">
+			<h2>{title}</h2>
+			{tasks.map(task => {
+				return ( 
+							<p>{complete === true ? <i className="far fa-check-square"></i> : <i className="far fa-square"></i>} {task.task}</p>
+					
+						)
+					   
+				
+			})}
+			
+		</div>
 		);
-	}
 }
 
-// note.propTypes = {};
+
+export default Note;

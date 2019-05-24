@@ -3,21 +3,24 @@
     border-radius: 15px;
     box-shadow: 1px 1px 2px darken($accent, 40%);
     display: inline-block;
+    font-family: $body-font;
     margin: 1rem;
     padding: 20px;
     width: fit-content;
   
-    .list-item {
-      font-family: $body-font;
-      font-size: 1rem;
-    }
-  
+
     input {
       border: 2px solid darken($accent, 30%);
-      display: block;
       font-family: $body-font;
       margin: .2rem;
       padding: 5px;
+    }
+
+    .add-task,
+    .delete-task {
+      background: transparent;
+      border: 1px solid transparent;
+      cursor: pointer;
     }
   
     .delete {
@@ -36,3 +39,4 @@
       }
     }
   }
+

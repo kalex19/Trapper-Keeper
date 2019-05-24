@@ -14,7 +14,7 @@ describe('actions', () => {
             type: 'ADD_NEW_NOTE'
         };
         const result = actions.addNewNote(note);
-        expected(result).toEqual(expected);
+        expect(result).toEqual(expected);
     });
 
 
