@@ -1,29 +1,24 @@
 export const addAllNotes = notes => ({
-    type: ADD_ALL_NOTES,
+    type: 'ADD_ALL_NOTES',
     notes
 });
 
 export const addNewNote = newNote => ({
-    type: ADD_NEW_NOTE,
+    type: 'ADD_NEW_NOTE',
     newNote
 });
 
 export const editNote = editedNote => ({
-    type: EDIT_NOTE,
+    type: 'EDIT_NOTE',
     editedNote
 })
 
-export const deleteNote = deletedNote => ({
-    type: DELETE_NOTE,
-    deletedNote
+export const toggleCompleteTask = id => ({
+    type: 'TOGGLE_COMPLETE_TASK',
+    id
 })
 
-export const loading = bool => ({
-    type: isLoading,
-    bool
-});
-
-export const setError = bool => ({
-    type: SET_ERROR,
-    bool
+export const deleteNote = deletedNote => ({
+    type: 'DELETE_NOTE',
+    deletedNote
 })

@@ -7,7 +7,7 @@ describe('actions', () => {
     it('should return an addNewNote action with the correct type and value', () => {
         const expected = { newNote: note, type: actions.ADD_NEW_NOTE};
         const result = actions.addNewNote(note);
-        expected(result).toEqual(expected);
+        expect(result).toEqual(expected);
     });
     it('should return an addAllNotes action with the correct type and value', () => {
 
