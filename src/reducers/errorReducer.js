@@ -1,6 +1,6 @@
-export const hasErrored = (state = '', action) => {
+export const setError = (state = '', action) => {
   switch(action.type) {
-    case 'HAS_ERRORED':
+    case 'SET_ERROR':
       return action.message;
     default:
       return state;
