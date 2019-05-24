@@ -6,12 +6,11 @@ import PropTypes from 'prop-types';
 import NoteContainer from '../../containers/NoteContainer/noteContainer';
 
 function App(){
-	let noteContainer = <NoteContainer />;
 	return (
 		<div className='App'>
-		<Route exact path='/' />
+		<Route exact path='/'/>
 		<h1>Tranquili-Sticky</h1>
-			{noteContainer}
+			<NoteContainer/>
 		</div>
 	);
 }

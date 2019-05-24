@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addNewNote } from '../../actions';
 
-export class notepopup extends Component {
+export class NotePopUp extends Component {
 	constructor() {
 		super();
 		this.state = {
@@ -65,11 +65,11 @@ export class notepopup extends Component {
 					/>
 					<button onClick={this.deleteTask} className='delete-task'><i className="fas fa-minus"></i></button>
 					{this.state.tasks.map(task => {
-						return <p contentEditable='true'><i class="far fa-square"></i>{task.task}</p>
+						return <p contentEditable='true'> <i class="far fa-square"></i> {task.task}</p>
 					})}
 				</section>
 			<Link to='/'>
-			<button onClick={this.submitForm}>Save</button>
+				<button onClick={this.submitForm}>Save</button>
 			</Link>
 			<button className="delete">
 					<i className="fas fa-trash-alt" />
@@ -85,4 +85,4 @@ const mapDispatchToProps = (dispatch) => ({
 	saveNote: (obj) => dispatch(addNewNote(obj))
 })
 
-export default connect(null, mapDispatchToProps)(notepopup);
+export default connect(null, mapDispatchToProps)(NotePopUp);

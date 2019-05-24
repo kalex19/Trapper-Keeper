@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Note from '../../components/Note/note';
-import NotePopUp from '../NotePopUp/notepopup'
-// import { connect } from 'react-redux';
+import NotePopUp from '../NotePopUp/notepopup';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 
-export default class NoteContainer extends Component {
+export class NoteContainer extends Component {
   constructor(){
     super() 
     this.state = {
@@ -15,7 +15,6 @@ export default class NoteContainer extends Component {
 
 
   render() {
-    let note = <Note />;
     return (
     <main className="NoteContainer">
     {/* <Route path='/notes/:id' render={ ({ match }) => {
@@ -25,17 +24,23 @@ export default class NoteContainer extends Component {
 					return <NotePopUp {...note} />
 				}
       }}/> */}
+      
       <Route exact path='/new-note' component={NotePopUp}/>
-		  <NavLink exact to='/new-note' className='add-note-button'>
-			<button >Add Note</button>
-		</NavLink>
+		  <Link to='/new-note' className='add-note-button'>
+			  <button >Add Note</button>
+		  </Link>
+      {this.props.notes.map(note => {
+        return <Note {...note}/>
+      })}
     </main>
     )
   }
 };
 
-// export default connect(mapStateToProps)(NoteContainer);
+const mapStateToProps = (state) => ({
+	notes: state.notes
+})
 
-// noteContainer.propTypes = {
-  
-// };
+export default connect(mapStateToProps)(NoteContainer);
+
+
