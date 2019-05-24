@@ -1,4 +1,4 @@
-export const setError = (state = '', action) => {
+const setError = (state = '', action) => {
   switch(action.type) {
     case 'SET_ERROR':
       return action.message;
@@ -6,3 +6,5 @@ export const setError = (state = '', action) => {
       return state;
   }
 }
+
+export default setError;
