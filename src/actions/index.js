@@ -13,6 +13,11 @@ export const editNote = editedNote => ({
     editedNote
 })
 
+export const toggleCompleteTask = id => ({
+    type: 'TOGGLE_COMPLETE_TASK',
+    id
+})
+
 export const deleteNote = deletedNote => ({
     type: 'DELETE_NOTE',
     deletedNote
