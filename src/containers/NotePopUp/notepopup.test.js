@@ -22,4 +22,13 @@ describe('NotePopUp', () => {
     mapDispatchToProps(dispatch).saveNote();
     expect(dispatch.mock.calls[0][0]).toEqual(addNewNote())
   });
-})
+
+  it('should handle change', () => {
+    wrapper.setState({ title: '', tasks: ['']})
+    const e = { target: { name: 'title', value: 'Groceries' } }
+
+    wrapper.instance().handleChange(e);
+    expect(wrapper.state('title')).toEqual('Groceries')
+  });
+
+});
