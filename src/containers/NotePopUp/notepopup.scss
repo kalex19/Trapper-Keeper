@@ -8,6 +8,9 @@
     padding: 20px;
     width: fit-content;
   
+    .title {
+      margin-left: 55px;
+    }
 
     input {
       border: 2px solid darken($accent, 30%);
@@ -17,10 +20,34 @@
     }
 
     .add-task,
-    .delete-task {
+    .delete-task,
+    .check-task {
       background: transparent;
       border: 1px solid transparent;
       cursor: pointer;
+    }
+    
+    .delete-task {
+      justify-content: flex-end;
+    }
+
+    article {
+      border-bottom: 1px solid black;
+    }
+
+    .task {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    p {
+      margin: 10px;
+      font-size: 1.5rem;
+    }
+
+    .fa-minus,
+    .fa-square {
+      font-size: 2rem;
     }
   
     .delete {
@@ -37,6 +64,10 @@
         cursor: pointer;
         color: $h-color;
       }
+    }
+
+    .save-btn {
+      margin: 20px auto;
     }
   }
 

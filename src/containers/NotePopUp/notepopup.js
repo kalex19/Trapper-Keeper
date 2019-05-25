@@ -44,16 +44,16 @@ export class NotePopUp extends Component {
     } 
 	};
 	
-	deleteTask = id => {
+	deleteTasks = (id) => {
 		let tasks = this.state.tasks.filter(task => task.id !== id)
-		this.setState({tasks})
+		console.log(tasks)
+		this.setState({tasks: this.state.tasks, tasks});
 	}
 
 	render() {
-		let input = <input type='text'/>;
 		return (
 			<form className='note-pop-up'>
-				<input value={this.state.title} placeholder="Title" name="title" type="text" onChange={this.handleChange} />
+				<input value={this.state.title} placeholder="Title" name="title" type="text" onChange={this.handleChange} className='title'/>
 				<section className='task-handler'>
 					<button onClick={this.addTask} className='add-task'><i className="fas fa-plus"></i></button>
 					<input
@@ -62,14 +62,18 @@ export class NotePopUp extends Component {
 						name="task"
 						type="text"
 						onChange={this.handleChange} 
-					/>
-					<button onClick={this.deleteTask} className='delete-task'><i className="fas fa-minus"></i></button>
+					/> 
 					{this.state.tasks.map(task => {
-						return <p contentEditable='true'> <i class="far fa-square"></i> {task.task}</p>
+						return ( <article className='task' key={task.id}>
+							 					<button className='check-task'><i className="far fa-square"></i></button>	
+												<p contentEditable='true' suppressContentEditableWarning='true'> {task.task}</p> 
+												<button type='button' onClick={() => this.deleteTasks(task.id)} className='delete-task'><i className="fas fa-minus"></i></button>
+										</article>
+									 )
 					})}
 				</section>
 			<Link to='/'>
-				<button onClick={this.submitForm}>Save</button>
+				<button onClick={this.submitForm} className='save-btn'>Save</button>
 			</Link>
 			<button className="delete">
 					<i className="fas fa-trash-alt" />

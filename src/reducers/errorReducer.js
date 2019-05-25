@@ -6,3 +6,5 @@ export const setError = (state = '', action) => {
       return state;
   }
 }
+
+export default setError;
