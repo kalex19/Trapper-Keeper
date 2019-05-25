@@ -37,7 +37,7 @@ export class NoteContainer extends Component {
   }
 };
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
 	notes: state.notes
 })
 

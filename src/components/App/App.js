@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import NoteContainer from '../../containers/NoteContainer/noteContainer';
 
-function App(){
+export default function App(){
 	return (
 		<div className='App'>
 		<Route exact path='/'/>
@@ -14,5 +14,3 @@ function App(){
 		</div>
 	);
 }
-
-export default App;
