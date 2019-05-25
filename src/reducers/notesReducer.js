@@ -11,7 +11,9 @@ export const notes = (state = [], action) => {
         return note.id === action.id ? {...note, completed: !note.completed} : note;
       })
     case 'DELETE_NOTE':
-      return
+      return state.filter(note => {
+        return note.id !== action.deletedNote.id
+      });
     default:
       return state;
   }
