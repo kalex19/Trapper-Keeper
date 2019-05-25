@@ -81,7 +81,7 @@ export class NotePopUp extends Component {
 
 
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
 	saveNote: (obj) => dispatch(addNewNote(obj))
 })
 

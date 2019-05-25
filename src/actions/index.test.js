@@ -24,7 +24,7 @@ describe('actions', () => {
             type: 'ADD_ALL_NOTES'
         };
         const result = actions.addAllNotes(notes);
-        expected(result).toEqual(expected);
+        expect(result).toEqual(expected);
 
     });
     it('should return a type of  EDIT_NOTE, with the correct value', () => {
@@ -37,7 +37,7 @@ describe('actions', () => {
             type: 'DELETE_NOTE'
         };
         const result = actions.deleteNote(deleteNote);
-        expected(result).toEqual(expected);
+        expect(result).toEqual(expected);
     });
     it('should return a type of IS_LOADING, with a boolean', () => {
         const isLoading = true
@@ -46,7 +46,7 @@ describe('actions', () => {
             isLoading
         };
         const result = actions.isLoading();
-        expected(result).toEqual(expected);
+        expect(result).toEqual(expected);
     });
     it('should return a type of SET_ERROR, with a boolean', () => {
         const error = true
@@ -55,6 +55,6 @@ describe('actions', () => {
             error
         };
         const result = actions.setError();
-        expected(result).toEqual(expected);
+        expect(result).toEqual(expected);
     });
 })

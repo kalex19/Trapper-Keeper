@@ -1,4 +1,4 @@
-const notes = (state = [], action) => {
+export const notes = (state = [], action) => {
   switch(action.type) {
     case 'ADD_ALL_NOTES':
       return action.notes
@@ -16,5 +16,3 @@ const notes = (state = [], action) => {
       return state;
   }
 }
-
-export default notes;
