@@ -1,3 +1,5 @@
+import { truncate } from "fs";
+
 export const notes = (state = [], action) => {
   switch(action.type) {
     case 'ADD_ALL_NOTES':

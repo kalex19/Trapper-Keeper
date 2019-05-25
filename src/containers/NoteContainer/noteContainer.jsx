@@ -9,8 +9,14 @@ export class NoteContainer extends Component {
   constructor(){
     super() 
     this.state = {
-
+      notes: []
     }
+  }
+
+  componentDidMount = async () => {
+    const response = await fetch('http://localhost:3001/api/v1/notes')
+    const result = await response.json()
+    this.setState({notes: result})
   }
 
 
