@@ -20,6 +20,7 @@ export class NotePopUp extends Component {
 
 	submitForm = e => {
 		e.preventDefault();
+		console.log(this.props)
 		const { saveNote } = this.props;
 		saveNote({
 			id: Date.now(),
@@ -46,9 +47,17 @@ export class NotePopUp extends Component {
 	
 	deleteTasks = (id) => {
 		let tasks = this.state.tasks.filter(task => task.id !== id)
-		console.log(tasks)
 		this.setState({tasks: this.state.tasks, tasks});
 	}
+
+	// checkTasks = (id) => {
+	// 	let tasks = this.state.tasks.filter(task => {
+	// 		if(task.id === id) {
+	// 			return task.completed = true;
+	// 		}
+	// 	});
+	// 	this.setState(tasks)
+	// }
 
 	render() {
 		return (
@@ -65,9 +74,8 @@ export class NotePopUp extends Component {
 					/> 
 					{this.state.tasks.map(task => {
 						return ( <article className='task' key={task.id}>
-							 					<button className='check-task'><i className="far fa-square"></i></button>	
-												<p contentEditable='true' suppressContentEditableWarning='true'> {task.task}</p> 
 												<button type='button' onClick={() => this.deleteTasks(task.id)} className='delete-task'><i className="fas fa-minus"></i></button>
+												<p contentEditable='true' suppressContentEditableWarning='true'> {task.task}</p> 
 										</article>
 									 )
 					})}
@@ -75,9 +83,6 @@ export class NotePopUp extends Component {
 			<Link to='/'>
 				<button onClick={this.submitForm} className='save-btn'>Save</button>
 			</Link>
-			<button className="delete">
-					<i className="fas fa-trash-alt" />
-			</button>
 		</form>
 		);
 	}
