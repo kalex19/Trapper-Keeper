@@ -1,10 +1,17 @@
-import React, { Component } from 'react';
+import React, {
+	Component
+} from 'react';
 import PropTypes from 'prop-types';
-import { deleteNote, deleteTask } from '../../actions';
-import { connect } from 'react-redux';
+import {
+	deleteNote,
+	deleteTask
+} from '../../actions';
+import {
+	connect
+} from 'react-redux';
 
 export class Note extends Component {
-	constructor (props) {
+	constructor(props) {
 		super(props)
 		this.state = {
 
@@ -12,32 +19,53 @@ export class Note extends Component {
 	}
 
 	deleteNote = () => {
-		const { noteToDelete, title, tasks, id} = this.props;
+		const {
+			noteToDelete,
+			title,
+			tasks,
+			id
+		} = this.props;
 		noteToDelete({
 			id: id,
 			title: title,
-      		tasks: tasks,
-      		completed: false
+			tasks: tasks,
+			completed: false
 		})
 	}
 
 
 	render() {
-	const {title, tasks, complete} = this.props;
-	return (
-		<div className="Note">
-			<h2>{title}</h2>
-			{tasks.map(task => {
-				return ( 
-					<article className='task'>
-					<p>{complete === true ? <i className="far fa-check-square"></i> : <i className="far fa-square"></i>} {task.task}</p>	
-					</article>
+		const {
+			title,
+			tasks,
+			complete
+		} = this.props;
+		return ( <
+			div className = "Note" >
+			<
+			h2 > {
+				title
+			} < /h2> {
+				tasks.map(task => {
+					return ( <
+						article className = 'task' >
+						<
+						p > {
+							complete === true ? < i className = "far fa-check-square" > < /i> : <i className="far fa-square"></i >
+						} {
+							task.task
+						} < /p>	 <
+						/article>
 					)
-				}
-			)}
-			<button type='button' onClick={() => this.deleteNote()} className="delete"><i className="fas fa-trash-alt" /></button>
-		</div>
-	);
+				})
+			} <
+			button type = 'button'
+			onClick = {
+				() => this.deleteNote()
+			}
+			className = "delete" > < i className = "fas fa-trash-alt" / > < /button> <
+			/div>
+		);
 	}
 }
 
