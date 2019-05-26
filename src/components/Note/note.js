@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { deleteNote } from '../../actions';
+import { deleteNote, deleteTask } from '../../actions';
 import { connect } from 'react-redux';
 
 export class Note extends Component {
@@ -19,7 +19,6 @@ export class Note extends Component {
       		tasks: tasks,
       		completed: false
 		})
-		console.log(noteToDelete)
 	}
 
 
@@ -32,12 +31,11 @@ export class Note extends Component {
 				return ( 
 					<article className='task'>
 					<p>{complete === true ? <i className="far fa-check-square"></i> : <i className="far fa-square"></i>} {task.task}</p>	
-					<button onClick={() => this.deleteTasks(task.id)} className='delete-task'><i className="fas fa-minus"></i></button>
 					</article>
 					)
 				}
 			)}
-			<button onClick={() => this.deleteNote()} className="delete"><i className="fas fa-trash-alt" /></button>
+			<button type='button' onClick={() => this.deleteNote()} className="delete"><i className="fas fa-trash-alt" /></button>
 		</div>
 	);
 	}

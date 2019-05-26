@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addNewNote } from '../../actions';
+import { addNote } from '../../Util/notesToServer';
 
 export class NotePopUp extends Component {
 	constructor() {
@@ -20,7 +21,6 @@ export class NotePopUp extends Component {
 
 	submitForm = e => {
 		e.preventDefault();
-		console.log(this.props)
 		const { saveNote } = this.props;
 		saveNote({
 			id: Date.now(),
@@ -28,6 +28,7 @@ export class NotePopUp extends Component {
       tasks: this.state.tasks,
       completed: false
 		})
+
 	};
 
 	addTask = e => {
@@ -50,14 +51,6 @@ export class NotePopUp extends Component {
 		this.setState({tasks: this.state.tasks, tasks});
 	}
 
-	// checkTasks = (id) => {
-	// 	let tasks = this.state.tasks.filter(task => {
-	// 		if(task.id === id) {
-	// 			return task.completed = true;
-	// 		}
-	// 	});
-	// 	this.setState(tasks)
-	// }
 
 	render() {
 		return (
@@ -87,7 +80,6 @@ export class NotePopUp extends Component {
 		);
 	}
 }
-
 
 
 export const mapDispatchToProps = (dispatch) => ({
