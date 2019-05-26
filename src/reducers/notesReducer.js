@@ -1,4 +1,4 @@
-export const notes = (state = [], action) => {
+export const notesReducer = (state = [], action) => {
   switch(action.type) {
     case 'ADD_ALL_NOTES':
       return action.notes

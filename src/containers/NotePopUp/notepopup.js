@@ -52,7 +52,7 @@ export class NotePopUp extends Component {
 	render() {
 		let input = <input type='text'/>;
 		return (
-			<form className='note-pop-up'>
+			<form className='note-pop-up' onClick={this.submitForm}>
 				<input value={this.state.title} placeholder="Title" name="title" type="text" onChange={this.handleChange} />
 				<section className='task-handler'>
 					<button onClick={this.addTask} className='add-task'><i className="fas fa-plus"></i></button>
@@ -69,7 +69,7 @@ export class NotePopUp extends Component {
 					})}
 				</section>
 			<Link to='/'>
-				<button onClick={this.submitForm}>Save</button>
+				<button>Save</button>
 			</Link>
 			<button className="delete">
 					<i className="fas fa-trash-alt" />

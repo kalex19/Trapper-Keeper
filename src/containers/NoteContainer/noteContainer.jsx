@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 import { Route, Link } from 'react-router-dom';
 
 export class NoteContainer extends Component {
-  constructor(){
-    super() 
+  constructor(props){
+    super(props) 
     this.state = {
 
     }
@@ -17,6 +17,7 @@ export class NoteContainer extends Component {
   render() {
     return (
     <main className="NoteContainer">
+		{/* <Route exact path='/' component={NoteContainer} /> */}
     {/* <Route path='/notes/:id' render={ ({ match }) => {
 				const { id } = match.params
 				const note = notes.find(n => n.id === parseInt(id))
@@ -25,9 +26,9 @@ export class NoteContainer extends Component {
 				}
       }}/> */}
       
-      <Route exact path='/new-note' component={NotePopUp}/>
+      <Route exact path='/new-note' component={NotePopUp} />
 		  <Link to='/new-note' className='add-note-button'>
-			  <button >Add Note</button>
+			  <button>Add Note</button>
 		  </Link>
       {this.props.notes.map(note => {
         return <Note {...note}/>
