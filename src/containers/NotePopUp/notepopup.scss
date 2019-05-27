@@ -8,9 +8,9 @@
   margin: 1rem auto;
   width: fit-content;
   
-    .title {
-      margin-left: 55px;
-    }
+  .title {
+    margin-left: 40px;
+  }
 
   input {
     border: 2px solid darken($accent, 30%);
@@ -32,10 +32,26 @@
     }
   }
 
-  .save-btn button {
-    border: 1px solid black;
-    cursor: pointer;
+  .task {
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 1px solid black;
+  }
+
+  p {
     font-size: 1.5rem;
+  }
+
+  .fa-minus,
+  .fa-square {
+    font-size: 1.5rem;
+  }
+
+  .save-btn {
+    border: 1px solid darken($accent, 30%);
+    cursor: pointer;
+    font-size: 2rem;
+    margin: 20px auto;
 
     &:hover {
       background-color: $h-color;
@@ -57,10 +73,6 @@
       animation: jello-horizontal 0.9s both;
       cursor: pointer;
       color: $h-color;
-    }
-
-    .save-btn {
-      margin: 20px auto;
     }
   }
 }

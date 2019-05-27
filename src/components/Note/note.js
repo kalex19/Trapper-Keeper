@@ -21,6 +21,18 @@ export class Note extends Component {
 		})
 	}
 
+	deleteTasks = task => {
+		const { taskToDelete } = this.props;
+		taskToDelete({
+			id: task.id,
+			task: task.task,
+      		completed: false
+		})
+		// let taskToDelete = tasks.filter(task => task.id !== id)
+		// console.log(taskToDelete)
+		// this.setState({tasks: taskToDelete});
+	}
+
 
 	render() {
 	const {title, tasks, complete} = this.props;
@@ -28,8 +40,11 @@ export class Note extends Component {
 		<div className="Note">
 			<h2>{title}</h2>
 			{tasks.map(task => {
-				return ( 
-						<p>{complete === true ? <input type="checkbox" checked/> : <input type="checkbox" />} {task.task}</p>
+				return ( <article className='task'>
+							{complete === true ? <input className='check-box' type="checkbox" checked/> : <input className='check-box' type="checkbox" />}
+							<p contentEditable='true' suppressContentEditableWarning='true'> {task.task} </p>
+							<button type='button' onClick={() => this.deleteTasks(task)} className='delete-task'><i className="fas fa-minus"></i></button>
+						 </article>
 					)
 				}
 			)}
@@ -40,8 +55,10 @@ export class Note extends Component {
 }
 
 
+
 export const mapDispatchToProps = (dispatch) => ({
-	noteToDelete: (obj) => dispatch(deleteNote(obj))
+	noteToDelete: (obj) => dispatch(deleteNote(obj)),
+	taskToDelete: (obj) => dispatch(deleteTask(obj))
 })
 
 

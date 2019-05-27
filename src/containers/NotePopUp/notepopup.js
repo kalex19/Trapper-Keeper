@@ -4,6 +4,8 @@ import { Link, Redirect } from 'react-router-dom';
 import { addNewNote } from '../../actions';
 import { addNote } from '../../Util/thunks/addNote';
 
+
+
 export class NotePopUp extends Component {
 	constructor() {
 		super();
@@ -47,15 +49,21 @@ export class NotePopUp extends Component {
     } 
 	};
 	
-	deleteTasks = (id) => {
+	deleteTasks = id => {
 		let tasks = this.state.tasks.filter(task => task.id !== id)
 		this.setState({tasks});
 	}
 
+	handleChange2 = e => {
+		console.log(e.target)
+		const { value } = e.target;
+    this.setState({ task: value });
+  };
+
 	render() {
 		return (
 			<form className='note-pop-up' onSubmit={this.handleSubmit}>
-				<input value={this.state.title} placeholder="Title" name="title" type="text" onChange={this.handleChange} />
+				<input className='title' value={this.state.title} placeholder="Title" name="title" type="text" onChange={this.handleChange} />
 				<section className='task-handler'>
 					<button onClick={this.addTask} className='add-task'><i className="fas fa-plus"></i></button>
 					<input
@@ -66,13 +74,14 @@ export class NotePopUp extends Component {
 						onChange={this.handleChange} 
 					/> 
 					{this.state.tasks.map(task => {
-						return <p> <input type="checkbox" /> {task.task}</p>
+						return (<article className='task' key={task.id}>
+											<button type='button' onClick={() => this.deleteTasks(task.id)} className='delete-task'><i className="fas fa-minus"></i></button>
+											<p onChange={() => this.handleChange2(task)} contentEditable='true' suppressContentEditableWarning='true' > {task.task}</p> 
+										</article>
+										)
 					})}
 				</section>
-			<button type="submit">Save</button>
-			<button className="delete">
-					<i className="fas fa-trash-alt" />
-			</button>
+			<button className="save-btn" type="submit">Save</button>
 			{this.state.redirected && <Redirect to='/' className="save-btn" />}
 		</form>
 		);

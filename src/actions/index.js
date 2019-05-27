@@ -32,3 +32,8 @@ export const deleteNote = deletedNote => ({
     type: 'DELETE_NOTE',
     deletedNote
 })
+
+export const deleteTask = deletedTask => ({
+    type: 'DELETE_TASK',
+    deletedTask
+})
