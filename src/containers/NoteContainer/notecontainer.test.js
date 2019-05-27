@@ -22,10 +22,10 @@ describe('NoteContainer', () => {
 
   it('should mapState (notes) to props', () => {
     const state = {
-      notes: [{title: 'Groceries', tasks: ['Avocados']}]
+      notes: [{title: 'Groceries', task: ['Avocados']}]
     }
 
-    expect(mapStateToProps(state).notes).toEqual([{title: 'Groceries', tasks: ['Avocados']}])
+    expect(mapStateToProps(state).notes).toEqual([{title: 'Groceries', task: ['Avocados']}])
   });
 
   it('should mapDispatch (getNotes) to props', () => {

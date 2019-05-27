@@ -7,6 +7,8 @@ import NotePopUp from '../NotePopUp/notepopup';
 import { getNotes } from '../../Util/thunks/getNotes';
 import { addNote } from '../../Util/thunks/addNote';
 import { deleteNote, deleteTask } from '../../actions';
+import { fetchNotes } from '../../Util/thunks/fetchNotes';
+
 
 export class NoteContainer extends Component {
   constructor(props){
@@ -16,6 +18,7 @@ export class NoteContainer extends Component {
     }
   }
 
+  
   componentDidMount() {
    fetch('http://localhost:3001/api/v1/notes')
    .then(response => response.json())
@@ -26,7 +29,6 @@ export class NoteContainer extends Component {
     let notes = this.state.notes.filter(note => note.id !== id);
     this.setState({notes})
 	}
-
 
   render() {
     let filterOutBackEndTestNotes = this.state.notes.filter(note => note.title !== 'test')
@@ -51,7 +53,7 @@ export class NoteContainer extends Component {
 							                  {note.complete === true ? <input className='check-box' type="checkbox" checked/> : <input className='check-box' type="checkbox" />}
                                 <p>{task.task}</p>
 							                  <button type='button' className='delete-task'><i className="fas fa-minus"></i></button>
-						                  </article>
+						                 </article>
                             )
                     })}
                   <button type='button' onClick={() => this.deleteNote(note.id)} className="delete"><i className="fas fa-trash-alt" /></button>
@@ -72,15 +74,14 @@ NoteContainer.propTypes = {
 }
 
 export const mapStateToProps = (state) => ({
-	notes: state.notes
+   notes: state.notes
 })
 
 export const mapDispatchToProps = dispatch => ({
   getNotes: (url) => dispatch(getNotes(url)),
-  addNote: (obj) => dispatch(addNote(obj))
+  addNote: (obj) => dispatch(addNote(obj)),
   // noteToDelete: (obj) =>  dispatch(deleteNote(obj))
-})
+  // fetchNotes: (url) => dispatch(fetchNotes(url))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(NoteContainer);
-
-

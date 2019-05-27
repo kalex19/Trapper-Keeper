@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { addNote } from '../../Util/thunks/addNote';
-import { Note } from '../Note/note';
-
-
 
 export class NotePopUp extends Component {
 	constructor() {
@@ -86,6 +84,10 @@ export class NotePopUp extends Component {
 		</form>
 		);
 	}
+}
+
+NotePopUp.propTypes = {
+	addNote: PropTypes.func
 }
 
 
