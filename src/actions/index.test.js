@@ -1,19 +1,32 @@
 import * as actions from './index';
 
 describe('actions', () => {
-    let note = {
-        text: 'pluck the brow',
-        id: 5,
-        complete: false
-    }
-    let notes = [note, note, note]
+
+    let notes = [{
+            title: 'To do', 
+            tasks: [{title: 'Feed dog', completed: false}], 
+            completed: false, 
+            id: 1
+        }, 
+        {
+            title: 'Groceries', 
+            tasks: [{title: 'Mangoes', completed: false}], 
+            completed: false, 
+            id: 1
+        }]
 
     it('should return a type of ADD_NEW_NOTE, with correct value', () => {
+        const newNote = {
+            title: 'Groceries', 
+            tasks: [{title: 'Mangoes', completed: false}], 
+            completed: false, 
+            id: 1
+        }
         const expected = {
-            note,
+            newNote,
             type: 'ADD_NEW_NOTE'
         };
-        const result = actions.addNewNote(note);
+        const result = actions.addNewNote(newNote);
         expect(result).toEqual(expected);
     });
 
