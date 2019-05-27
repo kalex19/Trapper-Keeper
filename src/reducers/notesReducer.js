@@ -16,12 +16,6 @@ export const notesReducer = (state = [], action) => {
       return state.filter(note => {
         return note.id !== action.deletedNote.id
       });
-    // case 'DELETE_TASK':
-    //   return state.filter(note => {
-    //    return note.tasks.filter(task => {
-    //       return task.id !== action.deletedTask.id;
-    //     })
-    //   });
     default:
       return state;
   }
