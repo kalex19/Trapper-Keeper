@@ -68,8 +68,15 @@ describe('NotePopUp', () => {
     wrapper.setState({task: 'feed fish'});
     wrapper.instance().addTask(e);
     expect(wrapper.state('tasks')).toEqual([newTask])
-
   });
 
+  it('should delete tasks', () => {
+    let tasks = [{title: 'Laundry', id: 1}, {title: 'Homework', id: 2}];
+
+    wrapper.setState({tasks})
+    wrapper.instance().deleteTasks(2);
+
+    expect(wrapper.state('tasks')).toEqual([{title: 'Laundry', id: 1}])
+  })
 
 });
