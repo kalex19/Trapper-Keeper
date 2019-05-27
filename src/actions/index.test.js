@@ -2,19 +2,6 @@ import * as actions from './index';
 
 describe('actions', () => {
 
-    let notes = [{
-            title: 'To do', 
-            tasks: [{title: 'Feed dog', completed: false}], 
-            completed: false, 
-            id: 1
-        }, 
-        {
-            title: 'Groceries', 
-            tasks: [{title: 'Mangoes', completed: false}], 
-            completed: false, 
-            id: 1
-        }]
-
     it('should return a type of ADD_NEW_NOTE, with correct value', () => {
         const newNote = {
             title: 'Groceries', 
@@ -32,6 +19,19 @@ describe('actions', () => {
 
 
     it('should return a type of ADD_ALL_NOTES with the correct value', () => {
+        let notes = [{
+            title: 'To do', 
+            tasks: [{title: 'Feed dog', completed: false}], 
+            completed: false, 
+            id: 1
+        }, 
+        {
+            title: 'Groceries', 
+            tasks: [{title: 'Mangoes', completed: false}], 
+            completed: false, 
+            id: 1
+        }]
+        
         const expected = {
             notes,
             type: 'ADD_ALL_NOTES'
@@ -81,6 +81,14 @@ describe('actions', () => {
         const result = actions.loading(true);
         expect(result).toEqual(expected);
     });
+
+    it('should return a type of todo with a toggled complete value', () => {
+        const id = 1;
+        const expected = { type: 'TOGGLE_COMPLETE', id: 1};
+
+        const result = actions.toggleCompleteTask(id);
+        expect(result).toEqual(expected);
+    })
 
     it('should return a type of SET_ERROR, with a boolean', () => {
         const expected = {

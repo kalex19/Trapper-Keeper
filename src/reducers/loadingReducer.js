@@ -7,4 +7,4 @@ export const isLoading = (state = false, action) => {
   }
 }
 
-export default loadingReducer;
+export default isLoading;
