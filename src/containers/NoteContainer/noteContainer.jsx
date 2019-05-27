@@ -17,21 +17,20 @@ export class NoteContainer extends Component {
   render() {
     return (
     <main className="NoteContainer">
-    {/* <Route path='/notes/:id' render={ ({ match }) => {
+    <Route path='/notes/:id' render={ ({ match }) => {
 				const { id } = match.params
-				const note = notes.find(n => n.id === parseInt(id))
+				const note = this.props.notes.find(n => n.id === parseInt(id))
 				if (note) {
 					return <NotePopUp {...note} />
 				}
-      }}/> */}
-      
+      }}/>
       <Route exact path='/new-note' component={NotePopUp} />
-		  <Link to='/new-note' className='add-note-button'>
-			  <button>Add Note</button>
-		  </Link>
       {this.props.notes.map(note => {
         return <Note {...note}/>
       })}
+		  <Link to='/new-note' className='add-note-button'>
+			  <button>Add Note</button>
+		  </Link>
     </main>
     )
   }

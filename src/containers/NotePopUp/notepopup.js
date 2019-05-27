@@ -66,7 +66,7 @@ export class NotePopUp extends Component {
 					/>
 					<button onClick={this.deleteTask} className='delete-task'><i className="fas fa-minus"></i></button>
 					{this.state.tasks.map(task => {
-						return <p contentEditable='true'> <i class="far fa-square"></i> {task.task}</p>
+						return <p contentEditable='true'> <input type="checkbox" /> {task.task}</p>
 					})}
 				</section>
 			<button type="submit">Save</button>
