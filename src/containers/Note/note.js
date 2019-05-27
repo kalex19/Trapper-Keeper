@@ -16,8 +16,8 @@ export class Note extends Component {
 		noteToDelete({
 			id: id,
 			title: title,
-      		tasks: tasks,
-      		completed: false
+      tasks: tasks,
+      completed: false
 		})
 	}
 
