@@ -83,12 +83,11 @@ describe('actions', () => {
     });
 
     it('should return a type of SET_ERROR, with a boolean', () => {
-        const error = true
         const expected = {
             type: 'SET_ERROR',
-            error
+            message: 'Error!'
         };
-        const result = actions.setError();
+        const result = actions.setError('Error!');
         expect(result).toEqual(expected);
     });
 })
