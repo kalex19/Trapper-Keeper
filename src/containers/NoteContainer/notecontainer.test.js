@@ -1,8 +1,9 @@
 import React from 'react';
 import { NoteContainer } from './noteContainer';
 import { shallow } from 'enzyme';
-
 import { mapStateToProps } from './noteContainer'
+import { mapDispatchToProps } from '../NoteContainer/noteContainer';
+import { addNote } from '../../actions';
 
 describe('NoteContainer', () => {
 
@@ -18,11 +19,22 @@ describe('NoteContainer', () => {
     expect(wrapper).toMatchSnapshot()
   });
 
-  it('should map notes to props', () => {
+  it('should mapState (notes) to props', () => {
     const state = {
       notes: [{title: 'Groceries', tasks: ['Avocados']}]
     }
 
     expect(mapStateToProps(state).notes).toEqual([{title: 'Groceries', tasks: ['Avocados']}])
-  })
+  });
+
+  it('should mapDispatch (addNote) to props', () => {
+    const dispatch = jest.fn();
+
+    mapDispatchToProps(dispatch).getNotes();
+    expect(dispatch.mock.calls[0][0]).toEqual(addNote())
+  });
+
+  it('should mapDispatch (getNotes) to props', () => {
+
+  });
 });
