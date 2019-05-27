@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
-import { addNewNote } from '../../actions';
+import { Redirect } from 'react-router-dom';
 import { addNote } from '../../Util/thunks/addNote';
+import { Note } from '../Note/note';
 
 export class NotePopUp extends Component {
 	constructor() {
@@ -81,7 +81,6 @@ export class NotePopUp extends Component {
 
 
 export const mapDispatchToProps = (dispatch) => ({
-	// saveNote: (obj) => dispatch(addNewNote(obj)),
   addNote: (note) => dispatch(addNote(note))
 })
 
