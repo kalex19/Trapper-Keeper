@@ -1,7 +1,7 @@
 import { errors } from '../errorReducer';
 import * as actions from '../../actions';
 
-describe('setError', () => {
+describe('errors', () => {
 
   it('should return a default state', () => {
     const expected = '';

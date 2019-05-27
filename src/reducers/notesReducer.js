@@ -1,6 +1,6 @@
 import { addNote } from '../Util/thunks/addNote';
 
-export const notesReducer = (state = [], action) => {
+export const notes = (state = [], action) => {
   switch(action.type) {
     case 'ADD_ALL_NOTES':
       return action.notes
@@ -21,4 +21,4 @@ export const notesReducer = (state = [], action) => {
   }
 }
 
-export default notesReducer;
+export default notes;

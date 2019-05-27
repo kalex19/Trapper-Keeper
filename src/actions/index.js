@@ -19,7 +19,7 @@ export const deleteNote = deletedNote => ({
 })
 
 export const toggleCompleteTask = id => ({
-    type: 'TOGGLE_COMPLETE_TASK',
+    type: 'TOGGLE_COMPLETE',
     id
 })
 
@@ -32,4 +32,3 @@ export const setError = message => ({
     type: 'SET_ERROR',
     message
 });
-

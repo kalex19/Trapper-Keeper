@@ -21,7 +21,7 @@ export const addNote = (note) => {
       dispatch(addNewNote({...note}))
       return result;
     } catch (error) {
-      throw new Error();
+      throw new Error(error);
     }
   }
 };
