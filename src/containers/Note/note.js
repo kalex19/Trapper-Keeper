@@ -41,7 +41,9 @@ export class Note extends Component {
 	}
 }
 
-
+Note.propTypes = {
+	noteToDelete: PropTypes.func
+}
 
 export const mapDispatchToProps = (dispatch) => ({
 	noteToDelete: (obj) => dispatch(deleteNote(obj))
