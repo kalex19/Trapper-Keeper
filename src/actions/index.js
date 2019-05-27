@@ -31,5 +31,5 @@ export const setError = bool => ({
 export const deleteNote = deletedNote => ({
     type: 'DELETE_NOTE',
     deletedNote
-})
+});
 
