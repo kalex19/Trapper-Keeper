@@ -1,6 +1,6 @@
-import { truncate } from "fs";
+import { addNote } from '../Util/thunks/addNote';
 
-export const notes = (state = [], action) => {
+export const notesReducer = (state = [], action) => {
   switch(action.type) {
     case 'ADD_ALL_NOTES':
       return action.notes
@@ -21,4 +21,4 @@ export const notes = (state = [], action) => {
   }
 }
 
-export default notes;
+export default notesReducer;

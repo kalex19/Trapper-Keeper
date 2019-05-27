@@ -1,4 +1,4 @@
-export const setError = (state = '', action) => {
+export const errorReducer = (state = '', action) => {
   switch(action.type) {
     case 'SET_ERROR':
       return action.message;
@@ -7,4 +7,4 @@ export const setError = (state = '', action) => {
   }
 }
 
-export default setError;
+export default errorReducer;
