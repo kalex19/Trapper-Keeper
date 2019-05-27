@@ -41,26 +41,47 @@ describe('actions', () => {
 
     });
     it('should return a type of  EDIT_NOTE, with the correct value', () => {
+        const editedNote = {
+            title: 'Groceries', 
+            tasks: [{title: 'Avocados', completed: false}], 
+            completed: false, 
+            id: 1
+        }
 
-    });
-    it('should return a type of  DELETE_NOTE, with the correct value', () => {
-        const deleteNote = [note, note]
         const expected = {
-            deleteNote,
+            editedNote,
+            type: 'EDIT_NOTE'
+        }
+
+        const result = actions.editNote(editedNote);
+        expect(result).toEqual(expected);
+    });
+
+    it('should return a type of  DELETE_NOTE, with the correct value', () => {
+        const deletedNote = {
+            title: 'Groceries', 
+            tasks: [{title: 'Avocados', completed: false}], 
+            completed: false, 
+            id: 1
+        }
+
+        const expected = {
+            deletedNote,
             type: 'DELETE_NOTE'
         };
-        const result = actions.deleteNote(deleteNote);
+        const result = actions.deleteNote(deletedNote);
         expect(result).toEqual(expected);
     });
+
     it('should return a type of IS_LOADING, with a boolean', () => {
-        const isLoading = true
         const expected = {
             type: 'IS_LOADING',
-            isLoading
+            bool: true
         };
-        const result = actions.isLoading();
+        const result = actions.loading(true);
         expect(result).toEqual(expected);
     });
+
     it('should return a type of SET_ERROR, with a boolean', () => {
         const error = true
         const expected = {
