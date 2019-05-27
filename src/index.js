@@ -23,11 +23,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
-
-// const router = (
-//   <BrowserRouter>
-//   <App />
-//   </BrowserRouter>
-// )
-
-// ReactDOM.render(router, document.getElementById('root'));

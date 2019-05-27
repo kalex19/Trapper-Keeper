@@ -8,6 +8,9 @@
   margin: 1rem auto;
   width: fit-content;
   
+    .title {
+      margin-left: 55px;
+    }
 
   input {
     border: 2px solid darken($accent, 30%);
@@ -54,6 +57,10 @@
       animation: jello-horizontal 0.9s both;
       cursor: pointer;
       color: $h-color;
+    }
+
+    .save-btn {
+      margin: 20px auto;
     }
   }
 }

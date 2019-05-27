@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
-import Note from '../../components/Note/note';
-import NotePopUp from '../NotePopUp/notepopup';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Route, Link } from 'react-router-dom';
+import Note from '../../components/Note/note';
+import NotePopUp from '../NotePopUp/notepopup';
+import { getNotes } from '../../Util/thunks/getNotes';
+import { addNote } from '../../Util/thunks/addNote';
 
 export class NoteContainer extends Component {
   constructor(props){
     super(props) 
     this.state = {
-
+      notes: []
     }
+  }
+
+  componentDidMount = async () => {
+    const response = await fetch('http://localhost:3001/api/v1/notes')
+    const result = await response.json()
+    this.setState({notes: result})
   }
 
 
@@ -36,10 +44,20 @@ export class NoteContainer extends Component {
   }
 };
 
+NoteContainer.propTypes = {
+  getNotes: PropTypes.func,
+  notes: PropTypes.array
+}
+
 export const mapStateToProps = (state) => ({
 	notes: state.notes
 })
 
-export default connect(mapStateToProps)(NoteContainer);
+export const mapDispatchToProps = dispatch => ({
+  getNotes: (url) => dispatch(getNotes(url)),
+  addNote: (obj) => dispatch(addNote(obj))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(NoteContainer);
 
 

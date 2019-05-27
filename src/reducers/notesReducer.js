@@ -1,3 +1,5 @@
+import { addNote } from '../Util/thunks/addNote';
+
 export const notesReducer = (state = [], action) => {
   switch(action.type) {
     case 'ADD_ALL_NOTES':
@@ -11,8 +13,12 @@ export const notesReducer = (state = [], action) => {
         return note.id === action.id ? {...note, completed: !note.completed} : note;
       })
     case 'DELETE_NOTE':
-      return
+      return state.filter(note => {
+        return note.id !== action.deletedNote.id
+      });
     default:
       return state;
   }
 }
+
+export default notesReducer;

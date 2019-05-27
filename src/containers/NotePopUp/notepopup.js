@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { addNewNote } from '../../actions';
+import { addNote } from '../../Util/thunks/addNote';
 
 export class NotePopUp extends Component {
 	constructor() {
@@ -21,8 +22,8 @@ export class NotePopUp extends Component {
 
 	handleSubmit = e => {
 		e.preventDefault();
-		const { saveNote } = this.props;
-		saveNote({
+		const { addNote } = this.props;
+		addNote({
 			id: Date.now(),
 			title: this.state.title,
       tasks: this.state.tasks,
@@ -46,9 +47,9 @@ export class NotePopUp extends Component {
     } 
 	};
 	
-	deleteTask = id => {
+	deleteTasks = (id) => {
 		let tasks = this.state.tasks.filter(task => task.id !== id)
-		this.setState({tasks})
+		this.setState({tasks});
 	}
 
 	render() {
@@ -63,10 +64,9 @@ export class NotePopUp extends Component {
 						name="task"
 						type="text"
 						onChange={this.handleChange} 
-					/>
-					<button onClick={this.deleteTask} className='delete-task'><i className="fas fa-minus"></i></button>
+					/> 
 					{this.state.tasks.map(task => {
-						return <p contentEditable='true'> <input type="checkbox" /> {task.task}</p>
+						return <p> <input type="checkbox" /> {task.task}</p>
 					})}
 				</section>
 			<button type="submit">Save</button>
@@ -80,9 +80,9 @@ export class NotePopUp extends Component {
 }
 
 
-
 export const mapDispatchToProps = (dispatch) => ({
-	saveNote: (obj) => dispatch(addNewNote(obj))
+	// saveNote: (obj) => dispatch(addNewNote(obj)),
+  addNote: (note) => dispatch(addNote(note))
 })
 
 export default connect(null, mapDispatchToProps)(NotePopUp);

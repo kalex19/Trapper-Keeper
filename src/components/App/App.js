@@ -8,7 +8,6 @@ import NoteContainer from '../../containers/NoteContainer/noteContainer';
 export default function App(){
 	return (
 		<div className='App'>
-		{/* <Route exact path='/' component={NoteContainer}/> */}
 		<h1>Tranquili-Sticky</h1>
 			<NoteContainer/>
 		</div>
