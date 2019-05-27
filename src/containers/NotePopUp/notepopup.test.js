@@ -77,6 +77,6 @@ describe('NotePopUp', () => {
     wrapper.instance().deleteTasks(2);
 
     expect(wrapper.state('tasks')).toEqual([{title: 'Laundry', id: 1}])
-  })
+  });
 
 });

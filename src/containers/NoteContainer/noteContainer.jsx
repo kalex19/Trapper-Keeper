@@ -6,6 +6,7 @@ import Note from '../Note/note';
 import NotePopUp from '../NotePopUp/notepopup';
 import { getNotes } from '../../Util/thunks/getNotes';
 import { addNote } from '../../Util/thunks/addNote';
+import { fetchNotes } from '../../Util/thunks/fetchNotes';
 
 export class NoteContainer extends Component {
   constructor(props){
@@ -16,9 +17,9 @@ export class NoteContainer extends Component {
   }
 
   componentDidMount = async () => {
-    const response = await fetch('http://localhost:3001/api/v1/notes')
-    const result = await response.json()
-    this.setState({notes: result})
+    const url = 'http://localhost:3001/api/v1/notes/';
+    this.props.fetchNotes(url)
+    console.log(url)
   }
 
 
@@ -33,9 +34,11 @@ export class NoteContainer extends Component {
 				}
       }}/>
       <Route exact path='/new-note' component={NotePopUp} />
-      {this.props.notes.map(note => {
-        return <Note {...note}/>
-      })}
+      {
+        this.state.notes.map(note => {
+        return <Note {...note} />
+        })
+      }
 		  <Link to='/new-note' className='add-note-button'>
 			  <button>Add Note</button>
 		  </Link>
@@ -56,7 +59,8 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = dispatch => ({
   getNotes: (url) => dispatch(getNotes(url)),
-  addNote: (obj) => dispatch(addNote(obj))
+  addNote: (obj) => dispatch(addNote(obj)),
+  fetchNotes: (url) => dispatch(fetchNotes(url))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NoteContainer);
