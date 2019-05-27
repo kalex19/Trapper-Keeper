@@ -17,7 +17,6 @@ export class NoteContainer extends Component {
   render() {
     return (
     <main className="NoteContainer">
-		{/* <Route exact path='/' component={NoteContainer} /> */}
     {/* <Route path='/notes/:id' render={ ({ match }) => {
 				const { id } = match.params
 				const note = notes.find(n => n.id === parseInt(id))

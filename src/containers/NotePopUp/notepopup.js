@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { addNewNote } from '../../actions';
 
 export class NotePopUp extends Component {
@@ -9,7 +9,8 @@ export class NotePopUp extends Component {
 		this.state = {
       title: '',
       task: '',
-      tasks: []
+			tasks: [],
+			redirected: false
 		};
 	}
 
@@ -18,7 +19,7 @@ export class NotePopUp extends Component {
 		this.setState({	[name]:value });
 	};
 
-	submitForm = e => {
+	handleSubmit = e => {
 		e.preventDefault();
 		const { saveNote } = this.props;
 		saveNote({
@@ -27,6 +28,7 @@ export class NotePopUp extends Component {
       tasks: this.state.tasks,
       completed: false
 		})
+		this.setState({redirected:true})
 	};
 
 	addTask = e => {
@@ -50,9 +52,8 @@ export class NotePopUp extends Component {
 	}
 
 	render() {
-		let input = <input type='text'/>;
 		return (
-			<form className='note-pop-up' onClick={this.submitForm}>
+			<form className='note-pop-up' onSubmit={this.handleSubmit}>
 				<input value={this.state.title} placeholder="Title" name="title" type="text" onChange={this.handleChange} />
 				<section className='task-handler'>
 					<button onClick={this.addTask} className='add-task'><i className="fas fa-plus"></i></button>
@@ -68,12 +69,11 @@ export class NotePopUp extends Component {
 						return <p contentEditable='true'> <i class="far fa-square"></i> {task.task}</p>
 					})}
 				</section>
-			<Link to='/'>
-				<button>Save</button>
-			</Link>
+			<button type="submit">Save</button>
 			<button className="delete">
 					<i className="fas fa-trash-alt" />
 			</button>
+			{this.state.redirected && <Redirect to='/' className="save-btn" />}
 		</form>
 		);
 	}
