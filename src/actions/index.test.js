@@ -1,19 +1,32 @@
 import * as actions from './index';
 
 describe('actions', () => {
-    let note = {
-        text: 'pluck the brow',
-        id: 5,
-        complete: false
-    }
-    let notes = [note, note, note]
+
+    let notes = [{
+            title: 'To do', 
+            tasks: [{title: 'Feed dog', completed: false}], 
+            completed: false, 
+            id: 1
+        }, 
+        {
+            title: 'Groceries', 
+            tasks: [{title: 'Mangoes', completed: false}], 
+            completed: false, 
+            id: 1
+        }]
 
     it('should return a type of ADD_NEW_NOTE, with correct value', () => {
+        const newNote = {
+            title: 'Groceries', 
+            tasks: [{title: 'Mangoes', completed: false}], 
+            completed: false, 
+            id: 1
+        }
         const expected = {
-            note,
+            newNote,
             type: 'ADD_NEW_NOTE'
         };
-        const result = actions.addNewNote(note);
+        const result = actions.addNewNote(newNote);
         expect(result).toEqual(expected);
     });
 
@@ -28,33 +41,53 @@ describe('actions', () => {
 
     });
     it('should return a type of  EDIT_NOTE, with the correct value', () => {
+        const editedNote = {
+            title: 'Groceries', 
+            tasks: [{title: 'Avocados', completed: false}], 
+            completed: false, 
+            id: 1
+        }
 
-    });
-    it('should return a type of  DELETE_NOTE, with the correct value', () => {
-        const deleteNote = [note, note]
         const expected = {
-            deleteNote,
+            editedNote,
+            type: 'EDIT_NOTE'
+        }
+
+        const result = actions.editNote(editedNote);
+        expect(result).toEqual(expected);
+    });
+
+    it('should return a type of  DELETE_NOTE, with the correct value', () => {
+        const deletedNote = {
+            title: 'Groceries', 
+            tasks: [{title: 'Avocados', completed: false}], 
+            completed: false, 
+            id: 1
+        }
+
+        const expected = {
+            deletedNote,
             type: 'DELETE_NOTE'
         };
-        const result = actions.deleteNote(deleteNote);
+        const result = actions.deleteNote(deletedNote);
         expect(result).toEqual(expected);
     });
+
     it('should return a type of IS_LOADING, with a boolean', () => {
-        const isLoading = true
         const expected = {
             type: 'IS_LOADING',
-            isLoading
+            bool: true
         };
-        const result = actions.isLoading();
+        const result = actions.loading(true);
         expect(result).toEqual(expected);
     });
+
     it('should return a type of SET_ERROR, with a boolean', () => {
-        const error = true
         const expected = {
             type: 'SET_ERROR',
-            error
+            message: 'Error!'
         };
-        const result = actions.setError();
+        const result = actions.setError('Error!');
         expect(result).toEqual(expected);
     });
 })
