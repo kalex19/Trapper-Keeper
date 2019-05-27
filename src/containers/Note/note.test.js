@@ -1,6 +1,8 @@
 import React from 'react';
-import Note from './note';
+import { Note } from './note';
 import { shallow } from 'enzyme';
+import { mapDispatchToProps } from './note';
+import { deleteNote } from '../../actions';
 
 describe('Note', () => {
 
@@ -18,4 +20,11 @@ describe('Note', () => {
   it('should match the snapshot with all the data passed in', () => {
     expect(wrapper).toMatchSnapshot();
   });
-})
+
+  it('should mapDispatch deleteNote to props', () => {
+    const dispatch = jest.fn();
+
+    mapDispatchToProps(dispatch).noteToDelete();
+    expect(dispatch.mock.calls[0][0]).toEqual(deleteNote())
+  });
+});

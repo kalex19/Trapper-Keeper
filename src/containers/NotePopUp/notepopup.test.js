@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import { NotePopUp } from './notepopup';
 import { mapDispatchToProps } from './notepopup';
 import { addNewNote } from '../../actions';
+import { addNote } from '../../Util/thunks/addNote';
 
 describe('NotePopUp', () => {
 
@@ -16,11 +17,11 @@ describe('NotePopUp', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should dispatch saveNote to props', () => {
+  it('should mapDispatch addNote to props', () => {
     const dispatch = jest.fn();
 
-    mapDispatchToProps(dispatch).saveNote();
-    expect(dispatch.mock.calls[0][0]).toEqual(addNewNote())
+    mapDispatchToProps(dispatch).addNote();
+    expect(dispatch.mock.calls[0][0]).toEqual(addNote())
   });
 
   it('should handle change', () => {

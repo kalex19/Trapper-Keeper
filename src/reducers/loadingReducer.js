@@ -1,4 +1,4 @@
-export const loadingReducer = (state = false, action) => {
+export const isLoading = (state = false, action) => {
   switch(action.type) {
     case 'IS_LOADING':
       return action.isLoading;
@@ -7,4 +7,4 @@ export const loadingReducer = (state = false, action) => {
   }
 }
 
-export default loadingReducer;
+export default isLoading;

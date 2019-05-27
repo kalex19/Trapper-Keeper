@@ -1,19 +1,19 @@
-import { setError } from '../errorReducer';
+import { errors } from '../errorReducer';
 import * as actions from '../../actions';
 
-describe('setError', () => {
+describe('errors', () => {
 
   it('should return a default state', () => {
     const expected = '';
-    const result = setError(undefined, '');
+    const result = errors(undefined, '');
 
-    expect(result).toEqual(expected)
+    expect(result).toEqual(expected);
   });
 
   it('should return an error message', () => {
     const expected = 'Error!';
-    const result = setError(undefined, actions.setError);
-
+    const result = errors('', actions.setError('Error!'));
+    
     expect(result).toEqual(expected);
   });
 

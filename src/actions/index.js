@@ -13,8 +13,13 @@ export const editNote = editedNote => ({
     editedNote
 })
 
+export const deleteNote = deletedNote => ({
+    type: 'DELETE_NOTE',
+    deletedNote
+})
+
 export const toggleCompleteTask = id => ({
-    type: 'TOGGLE_COMPLETE_TASK',
+    type: 'TOGGLE_COMPLETE',
     id
 })
 
@@ -23,13 +28,7 @@ export const loading = bool => ({
     bool
 });
 
-export const setError = bool => ({
+export const setError = message => ({
     type: 'SET_ERROR',
-    bool
+    message
 });
-
-export const deleteNote = deletedNote => ({
-    type: 'DELETE_NOTE',
-    deletedNote
-});
-

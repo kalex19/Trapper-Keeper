@@ -18,8 +18,8 @@ describe('notes', () => {
   });
 
   it('should toggle a completed task', () => {
-    const expected = {id: 5, complete: false}
-    const result = notes(undefined, actions.toggleCompleteTask({id: 5, complete: true}));
+    const expected = [{id: 5, completed: false}]
+    const result = notes([{id: 5, completed: true}], actions.toggleCompleteTask(5));
 
     expect(result).toEqual(expected);
   });
