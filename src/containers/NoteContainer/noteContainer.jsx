@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Route, Link } from 'react-router-dom';
-import Note from '../../components/Note/note';
+import Note from '../Note/note';
 import NotePopUp from '../NotePopUp/notepopup';
 import { getNotes } from '../../Util/thunks/getNotes';
 import { addNote } from '../../Util/thunks/addNote';
@@ -46,6 +46,7 @@ export class NoteContainer extends Component {
 
 NoteContainer.propTypes = {
   getNotes: PropTypes.func,
+  addNote: PropTypes.func,
   notes: PropTypes.array
 }
 
