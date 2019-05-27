@@ -11,8 +11,8 @@ describe('isLoading', () => {
   });
 
   it('should return a truthy value in case of loading', () => {
-    const expected = true;
-    const result = isLoading(undefined, actions.isLoading);
+    const expected = false;
+    const result = isLoading(undefined, true);
 
     expect(result).toEqual(expected);
   });
