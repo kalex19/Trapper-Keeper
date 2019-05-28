@@ -4,13 +4,15 @@ import { shallow } from 'enzyme';
 import { mapStateToProps } from './noteContainer'
 import { mapDispatchToProps } from '../NoteContainer/noteContainer';
 import { addNote } from '../../Util/thunks/addNote';
-import { getNotes } from '../../Util/thunks/getNotes';
+import { fetchNotes } from '../../Util/thunks/fetchNotes';
 
 describe('NoteContainer', () => {
 
   let wrapper;
 
-  let notes = [{title: 'Groceries', tasks: ['Avocados']}]
+  let notes = [{title: 'Groceries', task: ['Avocados']}]
+
+  let note = {title: 'To Do', tasks: ['count dinos']}
 
   beforeEach(() => {
     wrapper = shallow( <NoteContainer notes={notes} />);
@@ -28,11 +30,15 @@ describe('NoteContainer', () => {
     expect(mapStateToProps(state).notes).toEqual([{title: 'Groceries', task: ['Avocados']}])
   });
 
-  it('should mapDispatch (getNotes) to props', () => {
+  it('should call dispatch on fetchNotes', () => {
     const dispatch = jest.fn();
 
-    mapDispatchToProps(dispatch).getNotes();
-    expect(dispatch.mock.calls[0][0]).toEqual(getNotes())
+    // mapDispatchToProps(dispatch).fetchNotes();
+    const actionToDispatch = fetchNotes()
+    const mappedProps = mapDispatchToProps(dispatch);
+    mappedProps.fetchNotes()
+    expect(dispatch).toHaveBeenCalledWith(actionToDispatch)
+    // expect(dispatch.mock.calls[0][0]).toEqual(fetchNotes())
   });
 
   it('should mapDispatch (addNotes) to props', () => {
