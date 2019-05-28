@@ -7,9 +7,7 @@ export const fetchNotes = url => {
     try {
       const data = await fetchData(url);
       const notes = data
-      // console.log(dispatch)
       dispatch(addAllNotes(notes));
-      console.log(notes)
       return notes
     } catch (error) {
       dispatch(setError(error.message))
