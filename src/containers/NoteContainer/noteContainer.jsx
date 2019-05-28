@@ -6,8 +6,8 @@ import Note from '../Note/note';
 import NotePopUp from '../NotePopUp/notepopup';
 import { getNotes } from '../../Util/thunks/getNotes';
 import { addNote } from '../../Util/thunks/addNote';
-import { deleteNote, deleteTask } from '../../actions';
 import { fetchNotes } from '../../Util/thunks/fetchNotes';
+import { deleteNotes } from '../../Util/thunks/deleteNote';
 
 
 export class NoteContainer extends Component {
@@ -21,15 +21,14 @@ export class NoteContainer extends Component {
   
   componentDidMount() {
     const url = 'http://localhost:3001/api/v1/notes'
-    const notes = this.props.fetchNotes(url);
+    this.props.fetchNotes(url);
   }
 
   deleteNoteFromStore = (obj) => {
-    this.props.deleteNote(obj)
+    this.props.deleteNotes(obj)
 	}
 
   render() {
-    // let filterOutBackEndTestNotes = this.props.notes.filter(note => note.title !== 'test')
     return ( 
     <main className="NoteContainer">
     <Route path='/notes/:id' render={ ({ match }) => {
@@ -77,7 +76,7 @@ export const mapDispatchToProps = dispatch => ({
   addNote: (obj) => dispatch(addNote(obj)),
   // noteToDelete: (obj) =>  dispatch(deleteNote(obj))
   fetchNotes: (url) => dispatch(fetchNotes(url)),
-  deleteNote: (obj) => dispatch(deleteNote(obj))
+  deleteNotes: (obj) => dispatch(deleteNotes(obj))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NoteContainer);
