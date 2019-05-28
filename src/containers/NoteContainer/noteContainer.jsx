@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Route, Link } from 'react-router-dom';
-import Note from '../Note/note';
 import NotePopUp from '../NotePopUp/notepopup';
 import { getNotes } from '../../Util/thunks/getNotes';
 import { addNote } from '../../Util/thunks/addNote';
@@ -74,7 +73,6 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = dispatch => ({
   getNotes: (url) => dispatch(getNotes(url)),
   addNote: (obj) => dispatch(addNote(obj)),
-  // noteToDelete: (obj) =>  dispatch(deleteNote(obj))
   fetchNotes: (url) => dispatch(fetchNotes(url)),
   deleteNotes: (obj) => dispatch(deleteNotes(obj))
 });

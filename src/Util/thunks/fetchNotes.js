@@ -1,6 +1,6 @@
 import { fetchData } from '../fetchData';
 
-import { loading, setError, addAllNotes } from '../../actions';
+import { setError, addAllNotes } from '../../actions';
 
 export const fetchNotes = url => {
   return async (dispatch) => {
