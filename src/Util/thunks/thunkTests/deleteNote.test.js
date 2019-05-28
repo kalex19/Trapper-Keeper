@@ -1,6 +1,6 @@
 import { deleteNotes } from "../deleteNote";
 import { deleteNote, setError } from '../../../actions';
-import { fetchData } from "../../fetchData";
+
 
 describe("deleteNote", () => {
   let mockURL;
