@@ -20,18 +20,16 @@ export class NoteContainer extends Component {
 
   
   componentDidMount() {
-   fetch('http://localhost:3001/api/v1/notes')
-   .then(response => response.json())
-   .then(notes => this.setState({notes: notes}));
+    const url = 'http://localhost:3001/api/v1/notes'
+    const notes = this.props.fetchNotes(url);
   }
 
-  deleteNote = (id) => {
-    let notes = this.state.notes.filter(note => note.id !== id);
-    this.setState({notes})
+  deleteNoteFromStore = (obj) => {
+    this.props.deleteNote(obj)
 	}
 
   render() {
-    let filterOutBackEndTestNotes = this.state.notes.filter(note => note.title !== 'test')
+    // let filterOutBackEndTestNotes = this.props.notes.filter(note => note.title !== 'test')
     return ( 
     <main className="NoteContainer">
     <Route path='/notes/:id' render={ ({ match }) => {
@@ -43,9 +41,6 @@ export class NoteContainer extends Component {
       }}/>
     <Route exact path='/new-note' component={NotePopUp} />
     {this.props.notes.map(note => {
-        return <Note {...note}/>
-    })}
-    {filterOutBackEndTestNotes.map(note => {
       return (<article className='Note' key={note.id}>
                 <h2>{note.title}</h2>
                   {note.tasks.map(task => {
@@ -56,7 +51,7 @@ export class NoteContainer extends Component {
 						                 </article>
                             )
                     })}
-                  <button type='button' onClick={() => this.deleteNote(note.id)} className="delete"><i className="fas fa-trash-alt" /></button>
+                  <button type='button' onClick={() => this.deleteNoteFromStore(note)} className="delete"><i className="fas fa-trash-alt" /></button>
 						    </article>
           )})}       
 		  <Link to='/new-note' className='add-note-button'>
@@ -81,7 +76,8 @@ export const mapDispatchToProps = dispatch => ({
   getNotes: (url) => dispatch(getNotes(url)),
   addNote: (obj) => dispatch(addNote(obj)),
   // noteToDelete: (obj) =>  dispatch(deleteNote(obj))
-  fetchNotes: (url) => dispatch(fetchNotes(url))
+  fetchNotes: (url) => dispatch(fetchNotes(url)),
+  deleteNote: (obj) => dispatch(deleteNote(obj))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NoteContainer);

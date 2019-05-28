@@ -13,8 +13,7 @@ export const addNote = (note) => {
         },
         body: JSON.stringify({
             title,
-            tasks,
-            completed: false
+            tasks
         })
       };
       const result = await fetchData(url, options);
