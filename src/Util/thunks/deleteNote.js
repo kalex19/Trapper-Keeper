@@ -4,8 +4,8 @@ import { deleteNote, setError, addAllNotes } from '../../actions';
 export const deleteNotes = obj => {
   return async dispatch => {
     try {
-      dispatch(deleteNote(obj));
       const url = `http://localhost:3001/api/v1/notes/${obj.id}`
+      dispatch(deleteNote(obj));
       const options = {
         method: 'DELETE',
         headers: {
@@ -16,7 +16,6 @@ export const deleteNotes = obj => {
         })
       }
       await fetchData(url, options)
-      dispatch(addAllNotes(notes))
     } catch (error) {
       dispatch(setError(error.message))
     }
