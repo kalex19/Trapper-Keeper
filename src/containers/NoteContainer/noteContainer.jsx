@@ -81,7 +81,7 @@ export const mapDispatchToProps = dispatch => ({
   getNotes: (url) => dispatch(getNotes(url)),
   addNote: (obj) => dispatch(addNote(obj)),
   // noteToDelete: (obj) =>  dispatch(deleteNote(obj))
-  // fetchNotes: (url) => dispatch(fetchNotes(url))
+  fetchNotes: (url) => dispatch(fetchNotes(url))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NoteContainer);
