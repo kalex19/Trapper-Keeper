@@ -22,11 +22,11 @@ export class Note extends Component {
 	}
 
 	render() {
-	const {title, task, complete} = this.props;
+	const {title, tasks, complete} = this.props;
 	return (
 		<div className="Note">
 			<h2>{title}</h2>
-			{task.map(task => {
+			{tasks.map(task => {
 				return ( <article className='task'>
 							{complete === true ? <input className='check-box' type="checkbox" checked/> : <input className='check-box' type="checkbox" />}
 							<p contentEditable='true' suppressContentEditableWarning='true'> {task.task} </p>
