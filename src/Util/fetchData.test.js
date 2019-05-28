@@ -36,7 +36,5 @@ describe('fetchData', () => {
       });
     });
     await expect(fetchData()).rejects.toEqual(Error());
-  })
-
-
-})
+  });
+});
