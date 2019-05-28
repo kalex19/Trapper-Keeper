@@ -7,7 +7,6 @@ import { deleteNote } from '../../actions';
 describe('Note', () => {
 
   let wrapper;
-
   let title = 'Chores'
   let task = ['Dishes', 'Sweep'] 
   let complete = false

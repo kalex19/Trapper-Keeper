@@ -17,7 +17,6 @@ export const completeTask = task => {
         })
       }
       const result = await fetchData(url, options)
-      console.log(result)
       dispatch(toggleCompleteTask(result))
     } catch (error) {
       throw new Error();

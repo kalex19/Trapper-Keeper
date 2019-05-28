@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { deleteNote, deleteTask, toggleCompleteTask } from '../../actions';
+import { deleteNote, toggleCompleteTask } from '../../actions';
 import { connect } from 'react-redux';
 
 export class Note extends Component {
@@ -13,7 +13,7 @@ export class Note extends Component {
 
 	handleClick = e => {
 		console.log(e.target.checked)
-		const { completeTask, id, title, task } = this.props;
+		const { completeTask, id } = this.props;
 		completeTask({
 			id,
 		})

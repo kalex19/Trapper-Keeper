@@ -1,5 +1,6 @@
 import { fetchData } from '../fetchData';
-import { deleteNote, setError, addAllNotes } from '../../actions';
+import { deleteNote, setError } from '../../actions';
+
 
 export const deleteNotes = obj => {
   return async dispatch => {
