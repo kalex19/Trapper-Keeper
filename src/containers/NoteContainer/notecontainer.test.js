@@ -10,7 +10,7 @@ describe('NoteContainer', () => {
 
   let wrapper;
 
-  let notes = [{title: 'Groceries', task: ['Avocados']}]
+  let notes = [{title: 'Groceries', tasks: ['Avocados']}]
 
   let note = {title: 'To Do', tasks: ['count dinos']}
 
@@ -37,7 +37,7 @@ describe('NoteContainer', () => {
     const actionToDispatch = fetchNotes()
     const mappedProps = mapDispatchToProps(dispatch);
     mappedProps.fetchNotes()
-    expect(dispatch).toHaveBeenCalledWith(actionToDispatch)
+    expect(dispatch).toHaveBeenCalledWith(fetchNotes())
     // expect(dispatch.mock.calls[0][0]).toEqual(fetchNotes())
   });
 

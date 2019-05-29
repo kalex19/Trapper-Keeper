@@ -9,6 +9,7 @@ describe('NotePopUp', () => {
 
   let wrapper;
   let addNote = jest.fn()
+  let mockNote = {title: 'Cool Dinosaurs', tasks: ['Dilophosaurus']}
 
   beforeEach(() => {
     wrapper = shallow(<NotePopUp addNote={addNote} />);
@@ -18,7 +19,7 @@ describe('NotePopUp', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should mapDispatch addNote to props', () => {
+  it('should dispatch addNote to props', () => {
     const dispatch = jest.fn();
 
     mapDispatchToProps(dispatch).addNote();

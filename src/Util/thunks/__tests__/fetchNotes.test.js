@@ -12,22 +12,42 @@ describe('fetchNotes', () => {
 
   beforeEach(() => {
     mockUrl = 'www.asongoficeandfire.com';
-    mockNote = {title: 'A Lannister always pays their debts', tasks: ['Blow up sept', 'Harm innocnet people'] };
+    mockNote = {title: 'Winter is coming', tasks: ['take the throne', 'ride dragons']};
+
     mockDispatch = jest.fn();
+
     window.fetch = jest.fn().mockImplementation(() => {
       return Promise.resolve({
         ok: true,
         json: () => Promise.resolve({
-          data: mockNote
+          note: mockNote
         })
       });
     });
-    thunk = fetchNotes(mockNote)
+    thunk = fetchNotes(mockUrl)
+  });
+  
+  it('should be called with the correct params', async () => {
+    await thunk(mockDispatch);
+    
+    expect(window.fetch).toHaveBeenCalledWith(mockUrl, undefined);
+  })
+
+  it('should dispatch addAllNotes', () => {
+    thunk(mockDispatch);
+
+    expect(mockDispatch).toHaveBeenCalledWith(addAllNotes(mockNote));
   });
 
-  it('should call dispatch addAllNotes', () => {
+  it('should dispatch setError in case of error', async () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: false,
+        statusText: 'something went wrong'
+      })
+    })
+    await thunk(mockDispatch);
 
-    thunk(mockDispatch);
-    expect(mockDispatch).toHaveBeenCalledWith(addAllNotes(note));
+    expect(mockDispatch).toHaveBeenCalledWith(setError('something went wrong'))
   })
 })

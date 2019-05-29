@@ -53,7 +53,6 @@ export class NotePopUp extends Component {
 	}
 
 	handleChange2 = e => {
-		console.log(e.target)
 		const { value } = e.target;
     this.setState({ task: value });
   };
