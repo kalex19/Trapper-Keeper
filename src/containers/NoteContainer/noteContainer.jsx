@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Route, Link } from 'react-router-dom';
 import NotePopUp from '../NotePopUp/notepopup';
+import Note from '../Note/note';
 import { getNotes } from '../../Util/thunks/getNotes';
 import { addNote } from '../../Util/thunks/addNote';
 import { fetchNotes } from '../../Util/thunks/fetchNotes';
-import { deleteNotes } from '../../Util/thunks/deleteNote';
+
 
 
 export class NoteContainer extends Component {
@@ -23,9 +24,6 @@ export class NoteContainer extends Component {
     this.props.fetchNotes(url);
   }
 
-  deleteNoteFromStore = (obj) => {
-    this.props.deleteNotes(obj)
-	}
 
   render() {
     return ( 
@@ -39,22 +37,11 @@ export class NoteContainer extends Component {
       }}/>
     <Route exact path='/new-note' component={NotePopUp} />
     {this.props.notes.map(note => {
-      return (<article className='Note' key={note.id}>
-                <h2>{note.title}</h2>
-                  {note.tasks.map(task => {
-                    return (<article className='task' key={task.id}>
-							                  {note.complete === true ? <input className='check-box' type="checkbox" checked/> : <input className='check-box' type="checkbox" />}
-                                <p>{task.task}</p>
-							                  <button type='button' className='delete-task'><i className="fas fa-minus"></i></button>
-						                 </article>
-                            )
-                    })}
-                  <button type='button' onClick={() => this.deleteNoteFromStore(note)} className="delete"><i className="fas fa-trash-alt" /></button>
-						    </article>
-          )})}       
-		  <Link to='/new-note' className='add-note-button'>
+        return <Note {...note}/>
+    })}
+		<Link to='/new-note' className='add-note-button'>
 			  <button>Add Note</button>
-		  </Link>
+		</Link>
     </main>
     )
   }
@@ -73,8 +60,7 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = dispatch => ({
   getNotes: (url) => dispatch(getNotes(url)),
   addNote: (obj) => dispatch(addNote(obj)),
-  fetchNotes: (url) => dispatch(fetchNotes(url)),
-  deleteNotes: (obj) => dispatch(deleteNotes(obj))
+  fetchNotes: (url) => dispatch(fetchNotes(url))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NoteContainer);
