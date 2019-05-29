@@ -22,7 +22,7 @@ Trapper Keeper is an application that allows users to keep track of their to-dos
 
 ## Desktop View
 
-[![screencapture-localhost-3000-2019-05-29-07-48-13.png](https://i.postimg.cc/T3XrW1nR/screencapture-localhost-3000-2019-05-29-07-48-13.png)](https://postimg.cc/TpCyzRkS)
+[![screencapture-localhost-3000-new-note-2019-05-29-07-46-28.png](https://i.postimg.cc/6323csZ9/screencapture-localhost-3000-new-note-2019-05-29-07-46-28.png)](https://postimg.cc/njxpVPT5)
 
 ## Wireframe
 
