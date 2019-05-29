@@ -13,7 +13,7 @@ describe('Note', () => {
   let id = 1
 
   beforeEach(() => {
-    wrapper = shallow(<Note title={title} task={task} complete={complete} id={id} />);
+    wrapper = shallow(<Note title={title} tasks={task} complete={complete} id={id} />);
   });
 
   it('should match the snapshot with all the data passed in', () => {
