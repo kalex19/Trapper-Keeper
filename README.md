@@ -10,16 +10,19 @@ Trapper Keeper is an application that allows users to keep track of their to-dos
 * Write meaningful, comprehensive unit and integration tests.
 
 ## Installation and Setup Instructions
-
-Coming soon...
+- clone this repo
+- clone [this](https://github.com/kalex19/Trapper-Keeper-Server) repo
+- open the terminal in both and run npm install
+- open your browser to localhost:3000
+- take notes!
 
 ## Demo
 
-Coming soon...
+https://media.giphy.com/media/LrX0YaeTM3v5EerVD2/giphy.gif
 
 ## Desktop View
 
-Coming soon...
+[![screencapture-localhost-3000-2019-05-29-07-48-13.png](https://i.postimg.cc/T3XrW1nR/screencapture-localhost-3000-2019-05-29-07-48-13.png)](https://postimg.cc/TpCyzRkS)
 
 ## Wireframe
 
