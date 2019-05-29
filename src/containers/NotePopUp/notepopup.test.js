@@ -2,8 +2,6 @@ import React from 'React';
 import { shallow } from 'enzyme';
 import { NotePopUp } from './notepopup';
 import { mapDispatchToProps } from './notepopup';
-import { addNewNote } from '../../actions';
-import { addNote } from '../../Util/thunks/addNote';
 
 describe('NotePopUp', () => {
 

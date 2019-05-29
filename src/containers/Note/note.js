@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { deleteNote, deleteTask, toggleCompleteTask } from '../../actions';
+import { deleteNote, toggleCompleteTask } from '../../actions';
 import { connect } from 'react-redux';
+import { deleteNotes } from '../../Util/thunks/deleteNote';
 
 export class Note extends Component {
 	constructor (props) {
@@ -13,7 +14,7 @@ export class Note extends Component {
 
 	handleClick = e => {
 		console.log(e.target.checked)
-		const { completeTask, id, title, task } = this.props;
+		const { completeTask, id } = this.props;
 		completeTask({
 			id,
 		})
@@ -29,10 +30,20 @@ export class Note extends Component {
 		})
 	}
 
+	deleteNoteFromStore = (obj) => {
+    this.props.deleteNotes(obj)
+	}
+
+	deleteTask = id => { 
+		console.log('tests')
+		let tasks = this.state.tasks.filter(task => task.id !== id)
+		this.setState({tasks});
+	}
+
 	render() {
-	const {title, tasks, complete} = this.props;
+	const {title, tasks, complete, id} = this.props;
 	return (
-		<div className="Note">
+		<div className="Note" key={id}>
 			<h2>{title}</h2>
 			{tasks.map(task => {
 				return ( <article className='task'>
@@ -49,7 +60,7 @@ export class Note extends Component {
 							<p 
 							contentEditable='true' 
 							suppressContentEditableWarning='true'> {task.task} </p>
-							<button type='button' 
+							<button onClick={this.deleteTask} type='button' 
 							className='delete-task'>
 							<i className="fas fa-minus"></i>
 							</button>
@@ -57,11 +68,7 @@ export class Note extends Component {
 					)
 				}
 			)}
-			<button type='button' 
-			onClick={() => this.deleteNote()} 
-			className="delete">
-			<i className="fas fa-trash-alt" />
-			</button>
+			<button type='button' onClick={() => this.deleteNoteFromStore(this.props)} className="delete"><i className="fas fa-trash-alt" /></button>
 		</div>
 	);
 	}
@@ -73,7 +80,8 @@ Note.propTypes = {
 
 export const mapDispatchToProps = (dispatch) => ({
 	noteToDelete: (obj) => dispatch(deleteNote(obj)),
-	completeTask: (obj) => dispatch(toggleCompleteTask(obj))
+	completeTask: (obj) => dispatch(toggleCompleteTask(obj)),
+	deleteNotes: (obj) => dispatch(deleteNotes(obj))
 })
 
 

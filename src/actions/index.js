@@ -11,17 +11,17 @@ export const addNewNote = newNote => ({
 export const editNote = editedNote => ({
     type: 'EDIT_NOTE',
     editedNote
-})
+});
 
 export const deleteNote = deletedNote => ({
     type: 'DELETE_NOTE',
     deletedNote
-})
+});
 
 export const toggleCompleteTask = id => ({
     type: 'TOGGLE_COMPLETE',
     id
-})
+});
 
 export const loading = bool => ({
     type: 'IS_LOADING',

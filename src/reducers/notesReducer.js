@@ -1,5 +1,3 @@
-import { addNote } from '../Util/thunks/addNote';
-
 export const notes = (state = [], action) => {
   switch(action.type) {
     case 'ADD_ALL_NOTES':
